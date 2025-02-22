@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert images to various formats online. Supports JPG, PNG, GIF, BMP, SVG, PDF, and more. Fast, secure, and easy to use.">
+    <meta name="keywords" content="image converter, convert image, image format converter, online image converter">
+    <meta name="author" content="Your Name">
+    <title>Online Image Converter - Convert Images to Any Format</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        main {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1s ease-in-out;
+        }
+
+        #converter {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 2px dashed #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        select, button {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        select:hover, button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background: #2575fc;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        #output {
+            margin-top: 1.5rem;
+        }
+
+        #output a {
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: 600;
+            background: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        #output a:hover {
+            transform: translateY(-2px);
+        }
+
+        #advertisement {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Converter</h1>
+        <p>Convert images to any format in seconds.</p>
+    </header>
+
+    <main>
+        <!-- Image Converter Form -->
+        <section id="converter">
+            <form id="image-converter-form">
+                <label for="image-upload" class="custom-file-upload">
+                    📁 Upload Image
+                </label>
+                <input type="file" id="image-upload" accept="image/*" required>
+                
+                <label for="format-select">Convert To:</label>
+                <select id="format-select">
+                    <option value="jpg">JPEG (JPG)</option>
+                    <option value="png">PNG</option>
+                    <option value="gif">GIF</option>
+                    <option value="bmp">BMP</option>
+                    <option value="webp">WEBP</option>
+                    <option value="svg">SVG</option>
+                    <option value="pdf">PDF</option>
+                    <option value="tiff">TIFF</option>
+                    <option value="ico">ICO</option>
+                    <option value="heic">HEIC</option>
+                </select>
+                
+                <button type="submit">Convert</button>
+            </form>
+            <div id="output"></div>
+        </section>
+
+        <!-- Advertisement Section -->
+        <section id="advertisement">
+            <!-- Google AdSense Ad Unit -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_SENSE_ID"
+                    crossorigin="anonymous"></script>
+            <!-- Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_AD_SENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Image Converter. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript Functionality
+        document.getElementById('image-converter-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const fileInput = document.getElementById('image-upload');
+            const formatSelect = document.getElementById('format-select');
+            const outputDiv = document.getElementById('output');
+            
+            if (fileInput.files.length === 0) {
+                alert('Please upload an image.');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    
+                    canvas.toBlob(function(blob) {
+                        const url = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = `converted_image.${formatSelect.value}`;
+                        link.textContent = `Download ${formatSelect.value.toUpperCase()}`;
+                        outputDiv.innerHTML = '';
+                        outputDiv.appendChild(link);
+                    }, `image/${formatSelect.value}`, 0.9);
+                };
+            };
+            
+            reader.readAsDataURL(file);
+        });
+
+        // Update file upload label with file name
+        document.getElementById('image-upload').addEventListener('change', function() {
+            const label = document.querySelector('.custom-file-upload');
+            if (this.files.length > 0) {
+                label.textContent = `📁 ${this.files[0].name}`;
+            } else {
+                label.textContent = '📁 Upload Image';
+            }
+        });
+    </script>
+</body>
+</html>
